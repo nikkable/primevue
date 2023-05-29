@@ -142,12 +142,8 @@ const tailwindLight = {
                 // console.log(props.disabled),
                 'p-5 border border-gray-300 text-gray-800 bg-gray-50 font-semibold  transition-none items-center cursor-pointer flex relative no-underline select-none bg-gray-50 border-gray-300  text-gray-800  hover:bg-gray-100 hover:border-gray-300 hover:text-gray-800 focus:shadow-focus',
                 { 'rounded-none border-t-0': !context.last && !context.first, 'rounded-tr-md rounded-tl-md': context.first, 'border-t-0': context.last ,'rounded-br-0 rounded-bl-0': !context.last},
-                { 'rounded-br-md rounded-bl-md border-t-0': context.last && parent.state.d_activeIndex !== context.index && !parent.props.multiple},
                 {
-                    'rounded-br-0 rounded-bl-0 border-t-0': context.last && Array.from(parent.props.activeIndex).includes(context.index) && parent.props.multiple
-                },
-                {
-                    'rounded-br-md rounded-bl-md border-t-0': context.last && !Array.from(parent.props.activeIndex).includes(context.index) && parent.props.multiple
+                    'rounded-br-md rounded-bl-md border-t-0': context.last && !context.active
                 },
                 {
                     'opacity-60':props?.disabled
