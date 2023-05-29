@@ -109,9 +109,62 @@ import DevelopmentSection from '@/components/layout/DevelopmentSection';
 
 const tailwindLight = {
     panel: {
-        root: {
-            class: 'dark:bg-primary'
+        header: ({ props }) => ({
+            class: ['flex items-center justify-between border border-gray-300 bg-gray-50 text-gray-800 rounded-tr-md rounded-tl-md', { 'p-5': !props.toggleable, 'py-3 px-5': props.toggleable }]
+        }),
+
+        title: {
+            class: 'leading-none font-semibold'
+        },
+        toggler: {
+            class: 'w-8 h-8 text-gray-600 border-0 bg-transparent rounded-full transition-none items-center cursor-pointer inline-flex justify-center overflow-hidden relative no-underline hover:text-gray-800 hover:border-transparent hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500'
+        },
+        togglerIcon: {
+            class: 'inline-block'
+        },
+        toggleableContent: {
+            class: ''
+        },
+        content: {
+            class: 'p-5 border border-gray-300 bg-white text-gray-800 border-t-0 last:rounded-br-md last:rounded-bl-md'
         }
+    },
+    accordion: {
+        header:({ props, parent, context }) => ({
+            class: [
+                {
+                    'select-none pointer-events-none cursor-default':props?.disabled
+                }
+            ]
+        }),
+        headerAction: ({ props, parent, context }) => ({
+            class: [
+                // console.log(props.disabled),
+                'p-5 border border-gray-300 text-gray-800 bg-gray-50 font-semibold  transition-none items-center cursor-pointer flex relative no-underline select-none bg-gray-50 border-gray-300  text-gray-800  hover:bg-gray-100 hover:border-gray-300 hover:text-gray-800 focus:shadow-focus',
+                { 'rounded-none border-t-0': !context.last && !context.first, 'rounded-tr-md rounded-tl-md': context.first, 'border-t-0': context.last ,'rounded-br-0 rounded-bl-0': !context.last},
+                { 'rounded-br-md rounded-bl-md border-t-0': context.last && parent.state.d_activeIndex !== context.index && !parent.props.multiple},
+                {
+                    'rounded-br-0 rounded-bl-0 border-t-0': context.last && Array.from(parent.props.activeIndex).includes(context.index) && parent.props.multiple
+                },
+                {
+                    'rounded-br-md rounded-bl-md border-t-0': context.last && !Array.from(parent.props.activeIndex).includes(context.index) && parent.props.multiple
+                },
+                {
+                    'opacity-60':props?.disabled
+                }
+                
+                
+            ]
+        }),
+        headerIcon: {
+            class: 'mr-2 inline-block w-4 h-4'
+        },
+        headerTitle: {
+            class: 'leading-none'
+        },
+        content: ({ props, parent, context }) => ({
+            class: ['p-5 border border-gray-300 bg-white text-gray-800 border-t-0 rounded-tr-none rounded-tl-none', { 'rounded-br-md rounded-bl-md border-t-0': context.last, 'rounded-br-none rounded-bl-none': !context.last }]
+        })
     }
 };
 

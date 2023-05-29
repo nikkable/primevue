@@ -66,5 +66,12 @@ export default defineNuxtConfig({
             contextPath: baseUrl
         }
     },
-    css: ['@/assets/styles/primevue.css', '/node_modules/primeicons/primeicons.css', '@/assets/styles/flags.css', '@/components/lib/colorpicker/ColorPicker.css']
+  
+    css: ['~/assets/styles/style.css','@/assets/styles/primevue.css', '/node_modules/primeicons/primeicons.css', '@/assets/styles/flags.css', '@/components/lib/colorpicker/ColorPicker.css'],
+    postcss: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        },
+      }
 });
