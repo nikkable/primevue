@@ -107,8 +107,16 @@ import DocSectionText from '@/components/doc/DocSectionText';
 import CodeHighlight from '@/components/layout/CodeHighlight';
 import DevelopmentSection from '@/components/layout/DevelopmentSection';
 
+const tailwindLight = {
+    panel: {
+        root: {
+            class: 'dark:bg-primary'
+        }
+    }
+};
+
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(PrimeVue, { ripple: true });
+    nuxtApp.vueApp.use(PrimeVue, { ripple: true, pt: tailwindLight });
 
     nuxtApp.vueApp.use(ToastService);
     nuxtApp.vueApp.use(ConfirmationService);
