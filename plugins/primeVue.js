@@ -183,7 +183,6 @@ const tailwindLight = {
     divider: {
         root: ({ props, parent, context }) => ({
             class: [
-                console.log(props),
                 'flex relative',
                 { ' w-full my-5 mx-0 py-0 px-5 before:block before:left-0 before:absolute before:top-1/2 before:w-full before:border-t before:border-gray-300': props.layout == 'horizontal' },
                 {
@@ -197,6 +196,32 @@ const tailwindLight = {
         }),
         content:{
             class:'px-1 bg-white z-10'
+        }
+    },
+    fieldset:{
+        root:{
+            class: 'border border-gray-300 bg-white text-gray-700 rounded-md block mx-2 my-0.5 pl-4 pr-5 inline-size-min'
+        },
+        legend:({ props, parent, context }) => ({
+            class:[
+                'border border-gray-300 text-gray-700 bg-gray-50 font-bold rounded-md',
+                {'p-0 transition-none hover:bg-gray-100 hover:border-gray-300 hover:text-gray-900': props.toggleable,'p-5': !props.toggleable}
+            ]
+        }),
+        toggler:({ props, parent, context }) => ({
+            class:[
+                'flex items-center justify-center',
+                {'p-5 text-gray-700 rounded-md transition-none cursor-pointer overflow-hidden relative select-none hover:text-gray-900 focus:shadow-focus':props.toggleable}
+            ]
+        }),
+        togglerIcon:{
+            class:'mr-2 inline-block'
+        },
+        legendTitle:{
+            class:'flex items-center justify-center leading-none'
+        },
+        content:{
+            class:'p-5'
         }
     }
 };
