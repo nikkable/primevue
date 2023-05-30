@@ -130,10 +130,10 @@ const tailwindLight = {
         }
     },
     accordion: {
-        header:({ props, parent, context }) => ({
+        header: ({ props, parent, context }) => ({
             class: [
                 {
-                    'select-none pointer-events-none cursor-default':props?.disabled
+                    'select-none pointer-events-none cursor-default': props?.disabled
                 }
             ]
         }),
@@ -141,15 +141,13 @@ const tailwindLight = {
             class: [
                 // console.log(props.disabled),
                 'p-5 border border-gray-300 text-gray-800 bg-gray-50 font-bold  transition-none items-center cursor-pointer flex relative no-underline select-none bg-gray-50 border-gray-300 hover:bg-gray-100 hover:border-gray-300 hover:text-gray-800 focus:shadow-focus',
-                { 'rounded-none border-t-0': !context.last && !context.first, 'rounded-tr-md rounded-tl-md': context.first, 'border-t-0': context.last ,'rounded-br-0 rounded-bl-0': !context.last},
+                { 'rounded-none border-t-0': !context.last && !context.first, 'rounded-tr-md rounded-tl-md': context.first, 'border-t-0': context.last, 'rounded-br-0 rounded-bl-0': !context.last },
                 {
                     'rounded-br-md rounded-bl-md border-t-0': context.last && !context.active
                 },
                 {
-                    'opacity-60':props?.disabled
+                    'opacity-60': props?.disabled
                 }
-                
-                
             ]
         }),
         headerIcon: {
@@ -162,24 +160,43 @@ const tailwindLight = {
             class: ['p-5 border border-gray-300 bg-white text-gray-800 border-t-0 rounded-tr-none rounded-tl-none', { 'rounded-br-md rounded-bl-md border-t-0': context.last, 'rounded-br-none rounded-bl-none': !context.last }]
         })
     },
-    card:{
-        root:{
-            class:'bg-white shadow rounded-md text-gray-800'
+    card: {
+        root: {
+            class: 'bg-white shadow rounded-md text-gray-800'
         },
-        body:{
-            class:'p-5'
+        body: {
+            class: 'p-5'
         },
-        title:{
-            class:'font-bold text-xl mb-2'
+        title: {
+            class: 'font-bold text-2xl mb-2'
         },
-        subtitle:{
-            class:'text-gray-500 mb-2 font-normal'
+        subtitle: {
+            class: 'text-gray-500 mb-2 font-normal'
         },
+        content: {
+            class: 'py-5'
+        },
+        footer: {
+            class: 'pt-5'
+        }
+    },
+    divider: {
+        root: ({ props, parent, context }) => ({
+            class: [
+                console.log(props),
+                'flex relative',
+                { ' w-full my-5 mx-0 py-0 px-5 before:block before:left-0 before:absolute before:top-1/2 before:w-full before:border-t before:border-gray-300': props.layout == 'horizontal' },
+                {
+                    'justify-center min-h-full mx-4 md:mx-5 py-5  before:block before:min-h-full before:absolute before:left-1/2 before:top-0 before:transform before:-translate-x-1/2 before:border-l before:border-gray-300':
+                        props.layout == 'vertical'
+                },
+                { 'before:border-solid': props.type == 'solid', 'before:border-dotted': props.type == 'dotted', 'before:border-dashed': props.type == 'dashed' },
+                { 'justify-center items-center': props.align == 'center' || props.align == null, 'justify-end items-center': props.align == 'right', 'justify-start items-center': props.align == 'left', 
+                ' items-start': props.align == 'top','items-end': props.align == 'bottom'}
+            ]
+        }),
         content:{
-            class:'py-5'
-        },
-        footer:{
-            class:'pt-5'
+            class:'px-1 bg-white z-10'
         }
     }
 };
