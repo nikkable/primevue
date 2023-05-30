@@ -114,7 +114,7 @@ const tailwindLight = {
         }),
 
         title: {
-            class: 'leading-none font-semibold'
+            class: 'leading-none font-bold'
         },
         toggler: {
             class: 'w-8 h-8 text-gray-600 border-0 bg-transparent rounded-full transition-none items-center cursor-pointer inline-flex justify-center overflow-hidden relative no-underline hover:text-gray-800 hover:border-transparent hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500'
@@ -140,7 +140,7 @@ const tailwindLight = {
         headerAction: ({ props, parent, context }) => ({
             class: [
                 // console.log(props.disabled),
-                'p-5 border border-gray-300 text-gray-800 bg-gray-50 font-semibold  transition-none items-center cursor-pointer flex relative no-underline select-none bg-gray-50 border-gray-300  text-gray-800  hover:bg-gray-100 hover:border-gray-300 hover:text-gray-800 focus:shadow-focus',
+                'p-5 border border-gray-300 text-gray-800 bg-gray-50 font-bold  transition-none items-center cursor-pointer flex relative no-underline select-none bg-gray-50 border-gray-300 hover:bg-gray-100 hover:border-gray-300 hover:text-gray-800 focus:shadow-focus',
                 { 'rounded-none border-t-0': !context.last && !context.first, 'rounded-tr-md rounded-tl-md': context.first, 'border-t-0': context.last ,'rounded-br-0 rounded-bl-0': !context.last},
                 {
                     'rounded-br-md rounded-bl-md border-t-0': context.last && !context.active
@@ -161,6 +161,26 @@ const tailwindLight = {
         content: ({ props, parent, context }) => ({
             class: ['p-5 border border-gray-300 bg-white text-gray-800 border-t-0 rounded-tr-none rounded-tl-none', { 'rounded-br-md rounded-bl-md border-t-0': context.last, 'rounded-br-none rounded-bl-none': !context.last }]
         })
+    },
+    card:{
+        root:{
+            class:'bg-white shadow rounded-md text-gray-800'
+        },
+        body:{
+            class:'p-5'
+        },
+        title:{
+            class:'font-bold text-xl mb-2'
+        },
+        subtitle:{
+            class:'text-gray-500 mb-2 font-normal'
+        },
+        content:{
+            class:'py-5'
+        },
+        footer:{
+            class:'pt-5'
+        }
     }
 };
 
