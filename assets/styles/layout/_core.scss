@@ -1,5 +1,15 @@
 html {
     font-size: 14px;
+
+    &.dark{
+        body {
+            background-color: #040d19;
+            .doc-section-description,.doc-intro,.doc-section-label,.doc-tabmenu,.layout-content-inner,.layout-sidebar,.pi-moon {
+                color: white !important;
+            }
+        }
+        
+    }
 }
 
 body {
