@@ -8,7 +8,7 @@
             <div id="docsearch"></div>
 
             <ul class="flex list-none m-0 p-0 gap-2 align-items-center">
-                <li>
+                <!-- <li>
                     <a
                         href="https://github.com/primefaces/primevue"
                         class="flex p-link border-1 w-2rem h-2rem surface-border border-round surface-card align-items-center justify-content-center transition-all transition-duration-300 hover:border-primary"
@@ -25,9 +25,14 @@
                     <button type="button" class="p-button flex border-1 w-2rem h-2rem p-0 align-items-center justify-content-center transition-all transition-duration-300 min-w-0" @click="onConfigButtonClick">
                         <i class="pi pi-cog"></i>
                     </button>
+                </li> -->
+                <li>
+                    <button type="button" class="p-button flex border-1 w-2rem h-2rem p-0 align-items-center justify-content-center transition-all transition-duration-300 min-w-0" @click="onToggleButtonClick">
+                        <i class="pi pi-moon"></i>
+                    </button>
                 </li>
 
-                <li class="relative">
+                <!-- <li class="relative">
                     <button
                         v-styleclass="{ selector: '@next', enterClass: 'hidden', enterActiveClass: 'scalein', leaveToClass: 'hidden', leaveActiveClass: 'fadeout', hideOnOutsideClick: true }"
                         type="button"
@@ -47,7 +52,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
@@ -56,6 +61,7 @@
 <script>
 import pkg from '@/package.json';
 import docsearch from '@docsearch/js';
+import { DomHandler } from 'primevue/utils';
 
 export default {
     emits: ['menubutton-click', 'configbutton-click'],
@@ -96,6 +102,15 @@ export default {
     methods: {
         onConfigButtonClick(event) {
             this.$emit('configbutton-click', event);
+        },
+        onToggleButtonClick(event) {
+            const root = document.getElementsByTagName('html')[0];
+
+            if (DomHandler.hasClass(root, 'dark')) {
+                DomHandler.removeClass(root, 'dark');
+            } else {
+                DomHandler.addClass(root, 'dark');
+            }
         },
         onMenuButtonClick(event) {
             this.$emit('menubutton-click', event);

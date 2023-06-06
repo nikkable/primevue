@@ -110,118 +110,179 @@ import DevelopmentSection from '@/components/layout/DevelopmentSection';
 const tailwindLight = {
     panel: {
         header: ({ props }) => ({
-            class: ['flex items-center justify-between border border-gray-300 bg-gray-50 text-gray-800 rounded-tr-md rounded-tl-md', { 'p-5': !props.toggleable, 'py-3 px-5': props.toggleable }]
+            class: [
+                'flex items-center justify-between', // flex and alignments
+                'border border-gray-300 bg-gray-100 text-gray-700 rounded-tl-lg rounded-tr-lg', // borders and colors
+                { 'p-5': !props.toggleable, 'py-3 px-5': props.toggleable } // condition
+            ]
         }),
-
         title: {
-            class: 'leading-none font-bold'
+            class: ['leading-none font-bold']
         },
         toggler: {
-            class: 'w-8 h-8 text-gray-600 border-0 bg-transparent rounded-full transition-none items-center cursor-pointer inline-flex justify-center overflow-hidden relative no-underline hover:text-gray-800 hover:border-transparent hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500'
+            class: [
+                'inline-flex items-center justify-center overflow-hidden relative no-underline', // alignments
+                'w-8 h-8 text-gray-600 border-0 bg-transparent rounded-full transition duration-200 ease-in-out', // widths, borders, and transitions
+                'hover:text-gray-900 hover:border-transparent hover:bg-gray-200', // hover
+                'focus:outline-none focus:outline-offset-0 focus:shadow-[0_0_0_0.2rem_rgba(191,219,254,1)]' // focus
+            ]
         },
         togglerIcon: {
-            class: 'inline-block'
-        },
-        toggleableContent: {
-            class: ''
+            class: ['inline-block']
         },
         content: {
-            class: 'p-5 border border-gray-300 bg-white text-gray-800 border-t-0 last:rounded-br-md last:rounded-bl-md'
+            class: ['p-5 border border-gray-300 bg-white text-gray-700 border-t-0 last:rounded-br-lg last:rounded-bl-lg'] // padding, borders, and colors
         }
     },
     accordion: {
-        header: ({ props, parent, context }) => ({
+        root: {
+            class: ['mb-1']
+        },
+        header: ({ props }) => {
+            console.log(props);
+
+            return {
+                class: [
+                    { 'select-none pointer-events-none cursor-default opacity-60': props?.disabled } // condition
+                ]
+            };
+        },
+        headerAction: ({ context }) => ({
             class: [
-                {
-                    'select-none pointer-events-none cursor-default': props?.disabled
-                }
-            ]
-        }),
-        headerAction: ({ props, parent, context }) => ({
-            class: [
-                // console.log(props.disabled),
-                'p-5 border border-gray-300 text-gray-800 bg-gray-50 font-bold  transition-none items-center cursor-pointer flex relative no-underline select-none bg-gray-50 border-gray-300 hover:bg-gray-100 hover:border-gray-300 hover:text-gray-800 focus:shadow-focus',
-                { 'rounded-none border-t-0': !context.last && !context.first, 'rounded-tr-md rounded-tl-md': context.first, 'border-t-0': context.last, 'rounded-br-0 rounded-bl-0': !context.last },
-                {
-                    'rounded-br-md rounded-bl-md border-t-0': context.last && !context.active
-                },
-                {
-                    'opacity-60': props?.disabled
-                }
+                'flex items-center cursor-pointer relative no-underline select-none', // alignments
+                'p-5 transition duration-200 ease-in-out rounded-t-md font-bold transition-shadow duration-200', // padding and transition
+                'border border-gray-300 bg-gray-100 text-gray-600', // borders and colors
+                'hover:border-gray-300 hover:bg-gray-200 hover:text-gray-800', // hover
+                'focus:outline-none focus:outline-offset-0 focus:shadow-[inset_0_0_0_0.2rem_rgba(191,219,254,1)]', // focus
+                { 'rounded-br-md rounded-bl-md': !context.active, 'rounded-br-0 rounded-bl-0 text-gray-800': context.active } // condition
             ]
         }),
         headerIcon: {
-            class: 'mr-2 inline-block w-4 h-4'
+            class: ['inline-block mr-2']
         },
         headerTitle: {
-            class: 'leading-none'
+            class: ['leading-none']
         },
-        content: ({ props, parent, context }) => ({
-            class: ['p-5 border border-gray-300 bg-white text-gray-800 border-t-0 rounded-tr-none rounded-tl-none', { 'rounded-br-md rounded-bl-md border-t-0': context.last, 'rounded-br-none rounded-bl-none': !context.last }]
-        })
+        content: {
+            class: ['p-5 border border-gray-300 bg-white text-gray-700 rounded-tl-none rounded-tr-none rounded-br-lg rounded-bl-lg']
+        }
     },
     card: {
         root: {
-            class: 'bg-white shadow rounded-md text-gray-800'
+            class: 'bg-white text-gray-700 shadow-md rounded-lg' // Background, text color, box shadow, and border radius.
         },
         body: {
-            class: 'p-5'
+            class: 'p-5' // Padding.
         },
         title: {
-            class: 'font-bold text-2xl mb-2'
+            class: 'text-2xl font-bold mb-2' // Font size, font weight, and margin bottom.
         },
         subtitle: {
-            class: 'text-gray-500 mb-2 font-normal'
+            class: 'font-normal mb-2 text-gray-600' // Font weight, margin bottom, and text color.
         },
         content: {
-            class: 'py-5'
+            class: 'py-5' // Vertical padding.
         },
         footer: {
-            class: 'pt-5'
+            class: 'pt-5' // Top padding.
         }
     },
     divider: {
-        root: ({ props, parent, context }) => ({
+        root: ({ props }) => ({
             class: [
-                'flex relative',
-                { ' w-full my-5 mx-0 py-0 px-5 before:block before:left-0 before:absolute before:top-1/2 before:w-full before:border-t before:border-gray-300': props.layout == 'horizontal' },
+                'flex relative', // alignments.
                 {
-                    'justify-center min-h-full mx-4 md:mx-5 py-5  before:block before:min-h-full before:absolute before:left-1/2 before:top-0 before:transform before:-translate-x-1/2 before:border-l before:border-gray-300':
-                        props.layout == 'vertical'
+                    'w-full my-5 mx-0 py-0 px-5 before:block before:left-0 before:absolute before:top-1/2 before:w-full before:border-t before:border-gray-300': props.layout == 'horizontal', // Padding and borders for horizontal layout.
+                    'justify-center min-h-full mx-4 md:mx-5 py-5 before:block before:min-h-full before:absolute before:left-1/2 before:top-0 before:transform before:-translate-x-1/2 before:border-l before:border-gray-300': props.layout == 'vertical' // Padding and borders for vertical layout.
                 },
-                { 'before:border-solid': props.type == 'solid', 'before:border-dotted': props.type == 'dotted', 'before:border-dashed': props.type == 'dashed' },
-                { 'justify-center items-center': props.align == 'center' || props.align == null, 'justify-end items-center': props.align == 'right', 'justify-start items-center': props.align == 'left', 
-                ' items-start': props.align == 'top','items-end': props.align == 'bottom'}
+                { 'before:border-solid': props.type == 'solid', 'before:border-dotted': props.type == 'dotted', 'before:border-dashed': props.type == 'dashed' }, // Border type condition.
+                {
+                    'justify-center items-center': props.align == 'center' || props.align == null, // Alignment condition for center or default alignment.
+                    'justify-end items-center': props.align == 'right', // Alignment condition for right alignment.
+                    'justify-start items-center': props.align == 'left', // Alignment condition for left alignment.
+                    'items-start': props.align == 'top', // Alignment condition for top alignment.
+                    'items-end': props.align == 'bottom' // Alignment condition for bottom alignment.
+                }
             ]
         }),
-        content:{
-            class:'px-1 bg-white z-10'
+        content: {
+            class: 'px-1 bg-white z-10' // Padding and background color.
         }
     },
-    fieldset:{
-        root:{
-            class: 'border border-gray-300 bg-white text-gray-700 rounded-md block mx-2 my-0.5 pl-4 pr-5 inline-size-min'
+    fieldset: {
+        root: {
+            class: 'border border-gray-300 bg-white text-gray-700 rounded-md block mx-2 my-0.5 pl-4 pr-5 inline-size-min' // Borders, background, text color, spacing, and inline size.
         },
-        legend:({ props, parent, context }) => ({
-            class:[
-                'border border-gray-300 text-gray-700 bg-gray-50 font-bold rounded-md',
-                {'p-0 transition-none hover:bg-gray-100 hover:border-gray-300 hover:text-gray-900': props.toggleable,'p-5': !props.toggleable}
-            ]
+        legend: ({ props }) => ({
+            class: ['border border-gray-300 text-gray-700 bg-gray-50 font-bold rounded-md', { 'p-0 transition-none hover:bg-gray-100 hover:border-gray-300 hover:text-gray-900': props.toggleable, 'p-5': !props.toggleable }] // Borders, background, text color, font weight, padding, and hover styles.
         }),
-        toggler:({ props, parent, context }) => ({
-            class:[
+        toggler: ({ props }) => ({
+            class: [
                 'flex items-center justify-center',
-                {'p-5 text-gray-700 rounded-md transition-none cursor-pointer overflow-hidden relative select-none hover:text-gray-900 focus:shadow-focus':props.toggleable}
-            ]
+                { 'p-5 text-gray-700 rounded-md transition-none cursor-pointer overflow-hidden relative select-none hover:text-gray-900 focus:focus:shadow-[inset_0_0_0_0.2rem_rgba(191,219,254,1)]': props.toggleable }
+            ] // alignments, padding, text color, rounded corners, transition, cursor, overflow, selectability, hover styles, and focus styles.
         }),
-        togglerIcon:{
-            class:'mr-2 inline-block'
+        togglerIcon: {
+            class: 'mr-2 inline-block' // Margin and display style.
         },
-        legendTitle:{
-            class:'flex items-center justify-center leading-none'
+        legendTitle: {
+            class: 'flex items-center justify-center leading-none' // alignments, and leading style.
         },
-        content:{
-            class:'p-5'
+        content: {
+            class: 'p-5' // Padding.
+        }
+    },
+
+    scrollpanel: {
+        wrapper: {
+            class: 'float-left h-full overflow-hidden relative w-full z-10'
+        },
+        content: {
+            class: 'box-border h-[calc(100% + 18px)] overflow-scroll pr-18 pb-18 relative scrollbar-none w-[calc(100% + 18px)] [&::-webkit-scrollbar]:hidden'
+        },
+        barX: {
+            class: 'bg-gray-50 border-0 transition-none invisible absolute bottom-0 h-3 z-2 rounded cursor-pointer opacity-0 relative'
+        },
+        barY: {
+            class: 'bg-gray-50 border-0 transition-none top-0 w-3 h-full z-2 rounded cursor-pointer opacity-0 relative'
+        }
+    },
+    tabview: {
+        navContainer: ({ props, context, parent }) => ({
+            class: ['relative', console.log(props.scrollable), { 'overflow-hidden': props.scrollable }]
+        }),
+        navContent: {
+            class: ['overflow-y-hidden overscroll-contain overscroll-auto scroll-smooth [&::-webkit-scrollbar]:hidden']
+        },
+
+        previousButton: {
+            class: ['h-full flex items-center justify-center absolute top-0 z-20', 'left-0', 'bg-white text-blue-500 w-12 shadow-md rounded-none']
+        },
+        nextButton: {
+            class: ['h-full flex items-center justify-center absolute top-0 z-20', 'right-0', 'bg-white text-blue-500 w-12 shadow-md rounded-none']
+        },
+        nav: {
+            class: ['flex flex-1 list-none m-0 p-0', 'bg-white border border-gray-300 border-0 border-b-2']
+        },
+        header: ({ props }) => ({
+            class: ['mr-0', { 'cursor-default pointer-events-none select-none user-select-none opacity-60': props?.disabled }]
+        }),
+        headerAction: ({ props, context, parent }) => ({
+            class: [
+                'items-center cursor-pointer flex overflow-hidden relative select-none text-decoration-none user-select-none',
+                'border-b-2 p-5 font-bold rounded-t-lg transition-shadow duration-200 m-0  ',
+                'transition-colors duration-200',
+                'focus:outline-none focus:outline-offset-0 focus:shadow-[inset_0_0_0_0.2rem_rgba(191,219,254,1)]',
+                { 'border-gray-300 bg-white text-gray-700 hover:bg-white hover:border-gray-400 hover:text-gray-600': parent.state.d_activeIndex != context.index },
+                { 'bg-white border-blue-500 text-blue-500': parent.state.d_activeIndex == context.index }
+            ],
+            style: 'margin-bottom:-2px'
+        }),
+        headerTitle: {
+            class: ['leading-none whitespace-nowrap']
+        },
+        content: {
+            class: ['bg-white p-5 border-0 text-gray-700 rounded-bl-2xl rounded-br-2xl']
         }
     }
 };
