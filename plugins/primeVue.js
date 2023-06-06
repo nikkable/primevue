@@ -148,7 +148,7 @@ const tailwindLight = {
                 'flex items-center cursor-pointer relative no-underline select-none', // Alignments
                 'p-5 transition duration-200 ease-in-out rounded-t-md font-bold transition-shadow duration-200', // Padding and transition
                 'border border-gray-300 bg-gray-100 text-gray-600', // Borders and colors
-                'dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80 dark:hover:bg-gray-900/80 dark:focus:shadow-[inset_0_0_0_0.2rem_rgba(147,197,253,0.5)]', // Dark mode
+                'dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80 dark:hover:bg-gray-800/80 dark:focus:shadow-[inset_0_0_0_0.2rem_rgba(147,197,253,0.5)]', // Dark mode
                 'hover:border-gray-300 hover:bg-gray-200 hover:text-gray-800', // Hover
                 'focus:outline-none focus:outline-offset-0 focus:shadow-[inset_0_0_0_0.2rem_rgba(191,219,254,1)]', // Focus
                 { 'rounded-br-md rounded-bl-md': !context.active, 'rounded-br-0 rounded-bl-0 text-gray-800': context.active } // Condition
@@ -217,16 +217,29 @@ const tailwindLight = {
     },
     fieldset: {
         root: {
-            class: 'border border-gray-300 bg-white text-gray-700 rounded-md block mx-2 my-0.5 pl-4 pr-5 inline-size-min' // Borders, background, text color, spacing, and inline size.
+            class: [
+                'border border-gray-300 bg-white text-gray-700 rounded-md block mx-2 my-0.5 pl-4 pr-5 inline-size-min', // Borders, background, text color, spacing, and inline size.
+                'dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80' //dark
+            ]
         },
         legend: ({ props }) => ({
-            class: ['border border-gray-300 text-gray-700 bg-gray-50 font-bold rounded-md', { 'p-0 transition-none hover:bg-gray-100 hover:border-gray-300 hover:text-gray-900': props.toggleable, 'p-5': !props.toggleable }] // Borders, background, text color, font weight, padding, and hover styles.
+            class: [
+                'border border-gray-300 text-gray-700 bg-gray-50 font-bold rounded-md',
+                'dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80 ', //dark
+                {
+                    'p-0 transition-none hover:bg-gray-100 hover:border-gray-300 hover:text-gray-900 dark:hover:text-white/80 dark:hover:bg-gray-800/80 dark:focus:shadow-[inset_0_0_0_0.2rem_rgba(147,197,253,0.5)]': props.toggleable,
+                    'p-5': !props.toggleable
+                }
+            ]
         }),
         toggler: ({ props }) => ({
             class: [
                 'flex items-center justify-center',
-                { 'p-5 text-gray-700 rounded-md transition-none cursor-pointer overflow-hidden relative select-none hover:text-gray-900 focus:focus:shadow-[inset_0_0_0_0.2rem_rgba(191,219,254,1)]': props.toggleable }
-            ] // alignments, padding, text color, rounded corners, transition, cursor, overflow, selectability, hover styles, and focus styles.
+                {
+                    'p-5 text-gray-700 rounded-md transition-none cursor-pointer overflow-hidden relative select-none hover:text-gray-900 focus:focus:shadow-[inset_0_0_0_0.2rem_rgba(191,219,254,1)] dark:text-white/80 dark:hover:text-white/80 dark:hover:bg-gray-800/60 dark:focus:shadow-[inset_0_0_0_0.2rem_rgba(147,197,253,0.5)]':
+                        props.toggleable
+                }
+            ]
         }),
         togglerIcon: {
             class: 'mr-2 inline-block' // Margin and display style.
