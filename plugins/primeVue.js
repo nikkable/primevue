@@ -108,11 +108,13 @@ import CodeHighlight from '@/components/layout/CodeHighlight';
 import DevelopmentSection from '@/components/layout/DevelopmentSection';
 
 const tailwindLight = {
+    //PANELS
     panel: {
         header: ({ props }) => ({
             class: [
                 'flex items-center justify-between', // flex and alignments
                 'border border-gray-300 bg-gray-100 text-gray-700 rounded-tl-lg rounded-tr-lg', // borders and colors
+                'dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80', // Dark mode
                 { 'p-5': !props.toggleable, 'py-3 px-5': props.toggleable } // condition
             ]
         }),
@@ -123,7 +125,7 @@ const tailwindLight = {
             class: [
                 'inline-flex items-center justify-center overflow-hidden relative no-underline', // alignments
                 'w-8 h-8 text-gray-600 border-0 bg-transparent rounded-full transition duration-200 ease-in-out', // widths, borders, and transitions
-                'hover:text-gray-900 hover:border-transparent hover:bg-gray-200', // hover
+                'hover:text-gray-900 hover:border-transparent hover:bg-gray-200 dark:hover:text-white/80 dark:hover:bg-gray-800/80 dark:focus:shadow-[inset_0_0_0_0.2rem_rgba(147,197,253,0.5)]', // hover
                 'focus:outline-none focus:outline-offset-0 focus:shadow-[0_0_0_0.2rem_rgba(191,219,254,1)]' // focus
             ]
         },
@@ -131,7 +133,10 @@ const tailwindLight = {
             class: ['inline-block']
         },
         content: {
-            class: ['p-5 border border-gray-300 bg-white text-gray-700 border-t-0 last:rounded-br-lg last:rounded-bl-lg'] // padding, borders, and colors
+            class: [
+                'p-5 border border-gray-300 bg-white text-gray-700 border-t-0 last:rounded-br-lg last:rounded-bl-lg',
+                'dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80' // Dark mode
+            ] // padding, borders, and colors
         }
     },
     accordion: {
@@ -198,8 +203,9 @@ const tailwindLight = {
             class: [
                 'flex relative', // alignments.
                 {
-                    'w-full my-5 mx-0 py-0 px-5 before:block before:left-0 before:absolute before:top-1/2 before:w-full before:border-t before:border-gray-300': props.layout == 'horizontal', // Padding and borders for horizontal layout.
-                    'justify-center min-h-full mx-4 md:mx-5 py-5 before:block before:min-h-full before:absolute before:left-1/2 before:top-0 before:transform before:-translate-x-1/2 before:border-l before:border-gray-300': props.layout == 'vertical' // Padding and borders for vertical layout.
+                    'w-full my-5 mx-0 py-0 px-5 before:block before:left-0 before:absolute before:top-1/2 before:w-full before:border-t before:border-gray-300 before:dark:border-blue-900/40': props.layout == 'horizontal', // Padding and borders for horizontal layout.
+                    'justify-center min-h-full mx-4 md:mx-5 py-5 before:block before:min-h-full before:absolute before:left-1/2 before:top-0 before:transform before:-translate-x-1/2 before:border-l before:border-gray-300 before:dark:border-blue-900/40':
+                        props.layout == 'vertical' // Padding and borders for vertical layout.
                 },
                 { 'before:border-solid': props.type == 'solid', 'before:border-dotted': props.type == 'dotted', 'before:border-dashed': props.type == 'dashed' }, // Border type condition.
                 {
@@ -212,7 +218,7 @@ const tailwindLight = {
             ]
         }),
         content: {
-            class: 'px-1 bg-white z-10' // Padding and background color.
+            class: 'px-1 bg-white z-10 dark:bg-gray-900' // Padding and background color.
         }
     },
     fieldset: {
@@ -251,7 +257,6 @@ const tailwindLight = {
             class: 'p-5' // Padding.
         }
     },
-
     scrollpanel: {
         wrapper: {
             class: 'float-left h-full overflow-hidden relative w-full z-10'
@@ -278,13 +283,13 @@ const tailwindLight = {
             class: ['overflow-y-hidden overscroll-contain overscroll-auto scroll-smooth [&::-webkit-scrollbar]:hidden'] // Overflow and scrollbar styles.
         },
         previousButton: {
-            class: ['h-full flex items-center justify-center absolute top-0 z-20', 'left-0', 'bg-white text-blue-500 w-12 shadow-md rounded-none'] // Flex and absolute positioning styles.
+            class: ['h-full flex items-center justify-center absolute top-0 z-20', 'left-0', 'bg-white text-blue-500 w-12 shadow-md rounded-none', 'dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80 ]'] // Flex and absolute positioning styles.
         },
         nextButton: {
-            class: ['h-full flex items-center justify-center absolute top-0 z-20', 'right-0', 'bg-white text-blue-500 w-12 shadow-md rounded-none'] // Flex and absolute positioning styles.
+            class: ['h-full flex items-center justify-center absolute top-0 z-20', 'right-0', 'bg-white text-blue-500 w-12 shadow-md rounded-none', 'dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80 '] // Flex and absolute positioning styles.
         },
         nav: {
-            class: ['flex flex-1 list-none m-0 p-0', 'bg-white border border-gray-300 border-0 border-b-2'] // Flex, list, margin, padding, and border styles.
+            class: ['flex flex-1 list-none m-0 p-0', 'bg-white border border-gray-300 border-0 border-b-2', 'dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80 '] // Flex, list, margin, padding, and border styles.
         },
         header: ({ props }) => ({
             class: ['mr-0', { 'cursor-default pointer-events-none select-none user-select-none opacity-60': props?.disabled }] // Margin and condition-based styles.
@@ -294,10 +299,10 @@ const tailwindLight = {
                 'items-center cursor-pointer flex overflow-hidden relative select-none text-decoration-none user-select-none', // Flex and overflow styles.
                 'border-b-2 p-5 font-bold rounded-t-lg transition-shadow duration-200 m-0', // Border, padding, font, and transition styles.
                 'transition-colors duration-200', // Transition duration style.
-                'focus:outline-none focus:outline-offset-0 focus:shadow-[inset_0_0_0_0.2rem_rgba(191,219,254,1)]', // Focus styles.
+                'focus:outline-none focus:outline-offset-0 focus:shadow-[inset_0_0_0_0.2rem_rgba(191,219,254,1)] dark:focus:shadow-[inset_0_0_0_0.2rem_rgba(147,197,253,0.5)]', // Focus styles.
                 {
-                    'border-gray-300 bg-white text-gray-700 hover:bg-white hover:border-gray-400 hover:text-gray-600': parent.state.d_activeIndex !== context.index, // Condition-based hover styles.
-                    'bg-white border-blue-500 text-blue-500': parent.state.d_activeIndex === context.index // Condition-based active styles.
+                    'border-gray-300 bg-white text-gray-700 hover:bg-white hover:border-gray-400 hover:text-gray-600 dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80 dark:hover:bg-gray-800/80': parent.state.d_activeIndex !== context.index, // Condition-based hover styles.
+                    'bg-white border-blue-500 text-blue-500 dark:bg-gray-900 dark:border-blue-300 dark:text-blue-300': parent.state.d_activeIndex === context.index // Condition-based active styles.
                 }
             ],
             style: 'margin-bottom:-2px' // Negative margin style.
@@ -306,8 +311,192 @@ const tailwindLight = {
             class: ['leading-none whitespace-nowrap'] // Leading and whitespace styles.
         },
         content: {
-            class: ['bg-white p-5 border-0 text-gray-700 rounded-bl-2xl rounded-br-2xl'] // Background, padding, border, and text styles.
+            class: ['bg-white p-5 border-0 text-gray-700 rounded-bl-2xl rounded-br-2xl', 'dark:bg-gray-900 dark:border-blue-900/40 dark:text-white/80'] // Background, padding, border, and text styles.
         }
+    },
+
+    //OVERLAYS
+
+    dialog: {
+        root: ({ props, state }) => ({
+            class: [console.log(state), 'rounded-lg shadow-lg border-0', 'flex flex-col max-h-90 transform scale-100', 'm-0  w-[50vw] z-40 relative', '', 'dark:border dark:border-blue-900/40']
+        }),
+        header: {
+            class: ['flex items-center justify-between flex-shrink-0', 'bg-white text-gray-800 border-t-0  rounded-tl-lg rounded-tr-lg p-6', 'dark:bg-gray-900  dark:text-white/80']
+        },
+        headerTitle: {
+            class: ['font-bold text-lg']
+        },
+        headerIcons: {
+            class: ['flex items-center']
+        },
+        closeButton: {
+            class: [
+                'flex items-center justify-center overflow-hidden relative',
+                'w-8 h-8 text-gray-500 border-0 bg-transparent rounded-full transition duration-200 ease-in-out mr-2 last:mr-0',
+                'hover:text-gray-700 hover:border-transparent hover:bg-gray-200',
+                'focus:outline-none focus:outline-offset-0 focus:shadow-[0_0_0_0.2rem_rgba(191,219,254,1)]', // focus
+                'dark:hover:text-white/80 dark:hover:border-transparent dark:hover:bg-gray-800/80 dark:focus:shadow-[inset_0_0_0_0.2rem_rgba(147,197,253,0.5)]'
+            ]
+        },
+        closeButtonIcon: {
+            class: ['w-4 h-4 inline-block']
+        },
+        content: {
+            class: ['overflow-y-auto', 'bg-white text-gray-700 px-6 pb-8 pt-0', 'rounded-bl-lg rounded-br-lg', 'dark:bg-gray-900  dark:text-white/80 ']
+        },
+        footer: {
+            class: ['flex-shrink-0 ', 'border-t-0 bg-white text-gray-700 px-6 pb-6 text-right rounded-b-lg', 'dark:bg-gray-900  dark:text-white/80']
+        },
+        mask: {
+            class: ['fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-auto', 'bg-black bg-opacity-40 transition duration-200 z-20']
+        }
+    },
+    confirmpopup: {
+        root: ({ props, state }) => ({
+            class: [
+                'bg-white text-gray-700 border-0 rounded-md shadow-lg',
+                'z-40 transform origin-center',
+                'mt-10 absolute left-0 top-0 ',
+                // 'before:absolute before:bottom-0 before:left-1/2 before:transform before:-translate-x-1/2 before:w-0 before:h-0 before:border-t-[10px] before:border-l-[5px] before:border-r-[5px] before:border-transparent before:border-b-[10px] before:border-t-[0] before:border-l-[5px] before:border-r-[5px] before:border-b-[0] before:border-red-500',
+                'dark:border dark:border-blue-900/40 dark:bg-gray-900  dark:text-white/80'
+            ]
+        }),
+        content: {
+            class: ['p-5 items-center flex']
+        },
+        icon: {
+            class: ['text-2xl']
+        },
+        message: {
+            class: ['ml-4']
+        },
+        footer: {
+            class: ['text-right px-5 py-5 pt-0 ']
+        }
+        // rejectButton: {
+        //     class: ['bg-transparent text-blue-500 border-transparent', 'text-sm px-2 py-1.5 ml-0 mr-2 w-auto', 'flex items-center cursor-pointer inline-flex overflow-hidden relative text-center select-none user-select-none align-bottom']
+        // },
+        // acceptButton: {
+        //     class: ['text-white bg-blue-500 border-2 border-blue-500', 'text-sm px-2 py-1.5 ml-0 mr-2 w-auto', 'flex items-center cursor-pointer inline-flex overflow-hidden relative text-center select-none user-select-none align-bottom']
+        // }
+    },
+    overlaypanel: {
+        root: ({ props, state }) => ({
+            class: [
+                'bg-white text-gray-700 border-0 rounded-md shadow-lg',
+                'z-40 transform origin-center',
+                'mt-10 absolute left-0 top-0 ',
+                // 'before:absolute before:bottom-0 before:left-1/2 before:transform before:-translate-x-1/2 before:w-0 before:h-0 before:border-t-[10px] before:border-l-[5px] before:border-r-[5px] before:border-transparent before:border-b-[10px] before:border-t-[0] before:border-l-[5px] before:border-r-[5px] before:border-b-[0] before:border-red-500',
+                'dark:border dark:border-blue-900/40 dark:bg-gray-900  dark:text-white/80'
+            ]
+        }),
+        content: {
+            class: ['p-5 items-center flex']
+        }
+    },
+    sidebar: {
+        root: ({ props, state }) => ({
+            class: [
+                console.log(props),
+                'flex flex-col pointer-events-auto relative transform translate-z-0 transition-transform duration-300',
+                'bg-white text-gray-700 border-0 shadow-lg',
+                { 'h-full w-80': props.position == 'left' || props.position == 'right', 'h-40 w-full': props.position == 'top' || props.position == 'bottom' },
+                'dark:border dark:border-blue-900/40 dark:bg-gray-900  dark:text-white/80'
+            ]
+        }),
+        header: {
+            class: ['flex items-center justify-end', 'p-5']
+        },
+        closeButton: {
+            class: [
+                'flex items-center justify-center overflow-hidden relative',
+                'w-8 h-8 text-gray-500 border-0 bg-transparent rounded-full transition duration-200 ease-in-out mr-2 last:mr-0',
+                'hover:text-gray-700 hover:border-transparent hover:bg-gray-200',
+                'focus:outline-none focus:outline-offset-0 focus:shadow-[0_0_0_0.2rem_rgba(191,219,254,1)]', // focus
+                'dark:hover:text-white/80 dark:hover:text-white/80 dark:hover:border-transparent dark:hover:bg-gray-800/80 dark:focus:shadow-[inset_0_0_0_0.2rem_rgba(147,197,253,0.5)]'
+            ]
+        },
+        closeButtonIcon: {
+            class: ['w-4 h-4 inline-block']
+        },
+        content: {
+            class: ['p-5 pt-0 h-full w-full', 'flex-grow overflow-y-auto']
+        },
+        mask: ({ props, state }) => ({
+            class: [
+                'fixed top-0 left-0 w-full h-full flex  pointer-events-auto',
+                'bg-black bg-opacity-40 transition duration-200 z-20',
+                { 'justify-end': props.position == 'right', 'items-start': props.position == 'top', 'items-end': props.position == 'bottom' }
+            ]
+        })
+    },
+
+    //UPLOAD
+
+    fileupload: {
+        input: {
+            class: ['hidden']
+        },
+        buttonbar: {
+            class: ['flex flex-wrap', 'bg-gray-50 p-5 border border-solid border-gray-300 text-gray-700 rounded-tr-lg rounded-tl-lg gap-2 border-b-0']
+        },
+        chooseButton: {
+            class: ['text-white bg-blue-500 border border-blue-500 p-3 px-5 rounded-md text-base', 'overflow-hidden relative']
+        },
+        chooseIcon: {
+            class: ['mr-2 inline-block']
+        },
+        chooseButtonLabel: {
+            class: ['flex-1 font-bold']
+        },
+        content: ({ props }) => ({
+            class: ['relative', 'bg-white p-8 border border-gray-300 text-gray-700 rounded-b-lg']
+        }),
+        file: {
+            class: ['flex items-center flex-wrap', 'p-4 border border-gray-300 rounded gap-2 mb-2', 'last:mb-0']
+        },
+        thumbnail: {
+            class: ['flex-shrink-0']
+        },
+        fileName: {
+            class: ['mb-2']
+        },
+        fileSize: {
+            class: ['mr-2']
+        }
+    },
+
+    //BUTTONS
+
+    button: {
+        root: ({ props }) => ({
+            class: [
+                console.log(props),
+                'items-center cursor-pointer inline-flex overflow-hidden relative select-none text-center align-bottom',
+                'px-4 py-3 text-base  transition duration-200 ease-in-out',
+                { 'text-white bg-blue-500 border border-blue-500 hover:bg-blue-600 hover:border-blue-600': !props.link && props.severity == null, 'text-blue-600 bg-transparent border-transparent': props.link },
+                {
+                    'text-white bg-gray-500 border border-gray-500 hover:bg-gray-600 hover:border-gray-600': props.severity == 'secondary',
+                    'text-white bg-green-500 border border-green-500 hover:bg-green-600 hover:border-green-600': props.severity == 'success',
+                    'text-white bg-blue-500 border border-blue-500 hover:bg-blue-600 hover:border-blue-600': props.severity == 'info',
+                    'text-white bg-orange-500 border border-orange-500 hover:bg-orange-600 hover:border-orange-600': props.severity == 'warning',
+                    'text-white bg-purple-500 border border-purple-500 hover:bg-purple-600 hover:border-purple-600': props.severity == 'help',
+                    'text-white bg-red-500 border border-red-500 hover:bg-red-600 hover:border-red-600': props.severity == 'danger'
+                },
+                { 'shadow-lg': props.raised },
+                { 'rounded-md': !props.rounded, 'rounded-full': props.rounded }
+            ]
+        }),
+        label: ({ props }) => ({
+            class: ['flex-1', 'duration-200', 'font-bold', { 'hover:underline': props.link }]
+        }),
+        icon: ({ props }) => ({
+            class: [
+                'mx-0',
+                { 'mr-2': props.iconPos == 'left' && props.label != null, 'ml-2': props.iconPos == 'right' && props.label != null, 'mb-2': props.iconPos == 'top' && props.label != null, 'mt-2': props.iconPos == 'bottom' && props.label != null }
+            ]
+        })
     }
 };
 
