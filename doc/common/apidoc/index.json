@@ -10673,7 +10673,7 @@
                                 {
                                     "name": "scope",
                                     "optional": false,
-                                    "type": "{\n  \t <b>sorted</b>: boolean, // Current sort state.\n  \t <b>sortOrder</b>: boolean, // Current sort order state.\n  }",
+                                    "type": "{\n  \t <b>sorted</b>: boolean, // Current sort state.\n  \t <b>sortOrder</b>: number, // Current sort order state.\n  }",
                                     "description": "sort icon slot's params."
                                 }
                             ],
@@ -28055,10 +28055,28 @@
                             "readonly": false,
                             "type": "PaginatorPassThroughOptionType",
                             "default": "",
+                            "description": "Uses to pass attributes to the prev page button's DOM element.",
+                            "deprecated": "since v3.30.0. Use 'previousPageButton' property instead."
+                        },
+                        {
+                            "name": "previousPageButton",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "PaginatorPassThroughOptionType",
+                            "default": "",
                             "description": "Uses to pass attributes to the prev page button's DOM element."
                         },
                         {
                             "name": "prevPageIcon",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "PaginatorPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the prev page icon's DOM element.",
+                            "deprecated": "since v3.30.0. Use 'previousPageIcon' property instead."
+                        },
+                        {
+                            "name": "previousPageIcon",
                             "optional": true,
                             "readonly": false,
                             "type": "PaginatorPassThroughOptionType",
@@ -28127,6 +28145,15 @@
                             "readonly": false,
                             "type": "DropdownPassThroughOptionType",
                             "default": "",
+                            "description": "Uses to pass attributes to the Dropdown component.",
+                            "deprecated": "since v3.30.0. Use 'rowPerPageDropdown' property instead."
+                        },
+                        {
+                            "name": "rowPerPageDropdown",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "DropdownPassThroughOptionType",
+                            "default": "",
                             "description": "Uses to pass attributes to the Dropdown component."
                         },
                         {
@@ -28135,10 +28162,28 @@
                             "readonly": false,
                             "type": "DropdownPassThroughOptionType",
                             "default": "",
+                            "description": "Uses to pass attributes to the Dropdown component.",
+                            "deprecated": "since v3.30.0. Use 'jumpToPageDropdown' property instead."
+                        },
+                        {
+                            "name": "jumpToPageDropdown",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "DropdownPassThroughOptionType",
+                            "default": "",
                             "description": "Uses to pass attributes to the Dropdown component."
                         },
                         {
                             "name": "JTPInput",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "InputNumberPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the Dropdown component.",
+                            "deprecated": "since v3.30.0. Use 'jumpToPageInput' property instead."
+                        },
+                        {
+                            "name": "jumpToPageInput",
                             "optional": true,
                             "readonly": false,
                             "type": "InputNumberPassThroughOptionType",
@@ -30290,7 +30335,7 @@
                             "optional": true,
                             "readonly": false,
                             "type": "boolean",
-                            "default": "false",
+                            "default": "true",
                             "description": "Whether to show buttons of source list."
                         },
                         {
@@ -30298,7 +30343,7 @@
                             "optional": true,
                             "readonly": false,
                             "type": "boolean",
-                            "default": "false",
+                            "default": "true",
                             "description": "Whether to show buttons of target list."
                         },
                         {
@@ -41508,14 +41553,6 @@
                             "description": "Uses to pass attributes to the content's DOM element."
                         },
                         {
-                            "name": "spacer",
-                            "optional": true,
-                            "readonly": false,
-                            "type": "VirtualScrollerPassThroughOptionType",
-                            "default": "",
-                            "description": "Uses to pass attributes to the spacer's DOM element."
-                        },
-                        {
                             "name": "loader",
                             "optional": true,
                             "readonly": false,
@@ -41530,6 +41567,14 @@
                             "type": "VirtualScrollerPassThroughOptionType",
                             "default": "",
                             "description": "Uses to pass attributes to the loading icon's DOM element."
+                        },
+                        {
+                            "name": "spacer",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "VirtualScrollerPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the spacer's DOM element."
                         }
                     ],
                     "methods": []
