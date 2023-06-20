@@ -550,6 +550,53 @@ const tailwindLight = {
                 { 'text-xs min-w-[1.5rem] h-[1.5rem] leading-[1.5rem]': props.size == null, 'text-lg min-w-[2.25rem] h-[2.25rem] leading-[2.25rem]': props.size == 'large', 'text-2xl min-w-[3rem] h-[3rem] leading-[3rem]': props.size == 'xlarge' }
             ]
         })
+    },
+    avatar: {
+        root: ({ props }) => ({
+            class: [
+                'flex items-center justify-center',
+                'bg-gray-300',
+                console.log(props),
+                { 'rounded-lg': props.shape == 'square', 'rounded-full': props.shape == 'circle' },
+                { 'text-base h-8 w-8': props.size == null || props.size == 'normal', 'w-12 h-12 text-xl': props.size == 'large', 'w-16 h-16 text-2xl': props.size == 'xlarge' }
+            ]
+        }),
+        image: {
+            class: ['h-full w-full']
+        }
+    },
+    avatargroup: {
+        root: {
+            class: ['flex items-center']
+        }
+    },
+    chip: {
+        root: {
+            class: ['inline-flex items-center', 'bg-gray-200 text-gray-800 rounded-[16px] px-3']
+        },
+        label: {
+            class: ['leading-6 mt-1.5 mb-1.5']
+        },
+        icon: {
+            class: ['leading-6 mr-2']
+        },
+        image: {
+            class: ['w-9 h-9 ml-[-0.75rem] mr-2', 'rounded-full']
+        },
+        removeIcon: {
+            class: ['ml-2 rounded-md transition duration-200 ease-in-out', 'cursor-pointer leading-6']
+        }
+    },
+    progressbar: {
+        root: ({ props }) => ({
+            class: ['overflow-hidden relative', 'border-0 h-6 bg-gray-200 rounded-md']
+        }),
+        value: {
+            class: ['transition-width duration-1000 ease-in-out', 'items-center border-0 flex h-full justify-center overflow-hidden absolute w-0', 'border-0 m-0 bg-blue-500']
+        },
+        label: {
+            class: ['inline-flex', 'text-white leading-6']
+        }
     }
 };
 
