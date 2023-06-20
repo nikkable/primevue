@@ -4865,6 +4865,14 @@
                             "type": "ButtonPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": [],
@@ -6862,6 +6870,14 @@
                             "type": "CarouselPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -7903,6 +7919,14 @@
                             "type": "ChartPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -9339,10 +9363,10 @@
                             "default": ""
                         },
                         {
-                            "name": "state",
+                            "name": "parent",
                             "optional": false,
                             "readonly": false,
-                            "type": "ColumnState",
+                            "type": "DataTablePassThroughOptions",
                             "default": ""
                         },
                         {
@@ -9350,13 +9374,6 @@
                             "optional": false,
                             "readonly": false,
                             "type": "ColumnContext",
-                            "default": ""
-                        },
-                        {
-                            "name": "parent",
-                            "optional": false,
-                            "readonly": false,
-                            "type": "DataTablePassThroughOptions",
                             "default": ""
                         }
                     ],
@@ -9875,20 +9892,20 @@
                             "description": "Uses to pass attributes to the row editor init icon's DOM element."
                         },
                         {
-                            "name": "rowEditorEditButton",
+                            "name": "rowEditorSaveButton",
                             "optional": true,
                             "readonly": false,
                             "type": "ColumnPassThroughOptionType",
                             "default": "",
-                            "description": "Uses to pass attributes to the row editor edit button's DOM element."
+                            "description": "Uses to pass attributes to the row editor save button's DOM element."
                         },
                         {
-                            "name": "rowEditorEditIcon",
+                            "name": "rowEditorSaveIcon",
                             "optional": true,
                             "readonly": false,
                             "type": "ColumnPassThroughOptionType",
                             "default": "",
-                            "description": "Uses to pass attributes to the row editor edit icon's DOM element."
+                            "description": "Uses to pass attributes to the row editor save icon's DOM element."
                         },
                         {
                             "name": "rowEditorCancelButton",
@@ -9905,6 +9922,22 @@
                             "type": "ColumnPassThroughOptionType",
                             "default": "",
                             "description": "Uses to pass attributes to the row editor cancel icon's DOM element."
+                        },
+                        {
+                            "name": "footerCell",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "ColumnPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the footer cell's DOM element."
+                        },
+                        {
+                            "name": "bodyCellContent",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "ColumnPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the body cell content's DOM element."
                         },
                         {
                             "name": "hiddenHeaderInputWrapper",
@@ -10012,37 +10045,6 @@
                             "type": "object",
                             "default": "",
                             "description": "Current style of the rowgroup header."
-                        }
-                    ],
-                    "methods": []
-                },
-                "ColumnContext": {
-                    "description": "Defines current options in Column component.",
-                    "relatedProp": "",
-                    "props": [
-                        {
-                            "name": "checked",
-                            "optional": false,
-                            "readonly": false,
-                            "type": "boolean",
-                            "default": "false",
-                            "description": "Current checked state of row as a boolean."
-                        },
-                        {
-                            "name": "focused",
-                            "optional": false,
-                            "readonly": false,
-                            "type": "boolean",
-                            "default": "false",
-                            "description": "Current focused state of row as a boolean."
-                        },
-                        {
-                            "name": "disabled",
-                            "optional": false,
-                            "readonly": false,
-                            "type": "boolean",
-                            "default": "false",
-                            "description": "Current disabled state of row as a boolean."
                         }
                     ],
                     "methods": []
@@ -10411,6 +10413,53 @@
                             "type": "ColumnPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
+                        }
+                    ],
+                    "methods": []
+                },
+                "ColumnContext": {
+                    "description": "Defines current options in Column component.",
+                    "relatedProp": "",
+                    "props": [
+                        {
+                            "name": "index",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "number",
+                            "default": "",
+                            "description": "Current index of the column."
+                        },
+                        {
+                            "name": "checked",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "Current checked state of row as a boolean."
+                        },
+                        {
+                            "name": "focused",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "Current focused state of row as a boolean."
+                        },
+                        {
+                            "name": "disabled",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "Current disabled state of row as a boolean."
                         }
                     ],
                     "methods": []
@@ -10702,6 +10751,13 @@
                             "readonly": false,
                             "type": "DataTablePassThroughOptions",
                             "default": ""
+                        },
+                        {
+                            "name": "context",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "ColumnGroupContext",
+                            "default": ""
                         }
                     ],
                     "methods": []
@@ -10753,6 +10809,29 @@
                             "type": "ColumnGroupPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
+                        }
+                    ],
+                    "methods": []
+                },
+                "ColumnGroupContext": {
+                    "description": "Defines current options in ColumnGroup component.",
+                    "relatedProp": "",
+                    "props": [
+                        {
+                            "name": "type",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "string",
+                            "default": "",
+                            "description": "Current type of the column group."
                         }
                     ],
                     "methods": []
@@ -11651,20 +11730,20 @@
                             "description": "Uses to pass attributes to the submenu icon's DOM element."
                         },
                         {
-                            "name": "submenu",
-                            "optional": true,
-                            "readonly": false,
-                            "type": "ContextMenuPassThroughOptionType",
-                            "default": "",
-                            "description": "Uses to pass attributes to the submenu's DOM element."
-                        },
-                        {
                             "name": "separator",
                             "optional": true,
                             "readonly": false,
                             "type": "ContextMenuPassThroughOptionType",
                             "default": "",
                             "description": "Uses to pass attributes to the separator's DOM element."
+                        },
+                        {
+                            "name": "submenu",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "ContextMenuPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the submenu's DOM element."
                         }
                     ],
                     "methods": []
@@ -13334,7 +13413,7 @@
                             "description": "Uses to pass attributes to the tbody's DOM element."
                         },
                         {
-                            "name": "rowgroupHeader",
+                            "name": "rowGroupHeader",
                             "optional": true,
                             "readonly": false,
                             "type": "DataTablePassThroughOptionType",
@@ -13342,12 +13421,12 @@
                             "description": "Uses to pass attributes to the rowgroup header's DOM element."
                         },
                         {
-                            "name": "row",
+                            "name": "bodyRow",
                             "optional": true,
                             "readonly": false,
                             "type": "DataTablePassThroughOptionType",
                             "default": "",
-                            "description": "Uses to pass attributes to the row's DOM element."
+                            "description": "Uses to pass attributes to the body row's DOM element."
                         },
                         {
                             "name": "rowExpansion",
@@ -13358,7 +13437,7 @@
                             "description": "Uses to pass attributes to the row expansion's DOM element."
                         },
                         {
-                            "name": "rowgroupFooter",
+                            "name": "rowGroupFooter",
                             "optional": true,
                             "readonly": false,
                             "type": "DataTablePassThroughOptionType",
@@ -13390,14 +13469,6 @@
                             "description": "Uses to pass attributes to the footerr ow's DOM element."
                         },
                         {
-                            "name": "footerCell",
-                            "optional": true,
-                            "readonly": false,
-                            "type": "DataTablePassThroughOptionType",
-                            "default": "",
-                            "description": "Uses to pass attributes to the footer cell's DOM element."
-                        },
-                        {
                             "name": "resizeHelper",
                             "optional": true,
                             "readonly": false,
@@ -13420,6 +13491,30 @@
                             "type": "DataTablePassThroughOptionType",
                             "default": "",
                             "description": "Uses to pass attributes to the reorder indicator down's DOM element."
+                        },
+                        {
+                            "name": "columnGroup",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "ColumnGroupPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the ColumnGroup helper components."
+                        },
+                        {
+                            "name": "row",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "RowPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the Row helper components."
+                        },
+                        {
+                            "name": "column",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "ColumnPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the Column helper components."
                         }
                     ],
                     "methods": []
@@ -14056,6 +14151,14 @@
                             "type": "DataTablePassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": [
@@ -14834,6 +14937,14 @@
                             "description": "Uses to pass attributes to the content's DOM element."
                         },
                         {
+                            "name": "grid",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "DataViewPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the grid's DOM element."
+                        },
+                        {
                             "name": "column",
                             "optional": true,
                             "readonly": false,
@@ -15035,6 +15146,14 @@
                             "type": "DataViewPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -15299,6 +15418,14 @@
                             "type": "DataViewLayoutOptionsPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -16516,6 +16643,14 @@
                             "type": "DockPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -18982,14 +19117,6 @@
                             "description": "Uses to pass attributes to the label's DOM element."
                         },
                         {
-                            "name": "basicButton",
-                            "optional": true,
-                            "readonly": false,
-                            "type": "FileUploadPassThroughOptionType",
-                            "default": "",
-                            "description": "Uses to pass attributes to the basic button's DOM element."
-                        },
-                        {
                             "name": "uploadIcon",
                             "optional": true,
                             "readonly": false,
@@ -19274,6 +19401,14 @@
                             "type": "FileUploadPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -20145,6 +20280,14 @@
                             "type": "GalleriaPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -20699,6 +20842,14 @@
                             "type": "ImagePassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -24470,14 +24621,6 @@
                             "description": "Uses to pass attributes to the submenu icon's DOM element."
                         },
                         {
-                            "name": "submenu",
-                            "optional": true,
-                            "readonly": false,
-                            "type": "MenubarPassThroughOptionType",
-                            "default": "",
-                            "description": "Uses to pass attributes to the submenu's DOM element."
-                        },
-                        {
                             "name": "separator",
                             "optional": true,
                             "readonly": false,
@@ -24500,6 +24643,14 @@
                             "type": "MenubarPassThroughOptionType",
                             "default": "",
                             "description": "Uses to pass attributes to the mobile popup menu button icon's DOM element."
+                        },
+                        {
+                            "name": "submenu",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "MenubarPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the submenu's DOM element."
                         },
                         {
                             "name": "start",
@@ -26847,6 +26998,14 @@
                             "type": "OrderListPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -27366,6 +27525,14 @@
                             "type": "OrganizationChartPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -27843,6 +28010,14 @@
                     "relatedProp": "PaginatorProps.pt",
                     "props": [
                         {
+                            "name": "paginatorWrapper",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "PaginatorPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the paginator wrapper's DOM element."
+                        },
+                        {
                             "name": "root",
                             "optional": true,
                             "readonly": false,
@@ -27851,12 +28026,12 @@
                             "description": "Uses to pass attributes to the root's DOM element."
                         },
                         {
-                            "name": "left",
+                            "name": "start",
                             "optional": true,
                             "readonly": false,
                             "type": "PaginatorPassThroughOptionType",
                             "default": "",
-                            "description": "Uses to pass attributes to the left's DOM element."
+                            "description": "Uses to pass attributes to the start's DOM element."
                         },
                         {
                             "name": "firstPageButton",
@@ -28129,7 +28304,7 @@
                             "readonly": false,
                             "type": "any",
                             "default": "",
-                            "description": "Template of the paginator, can either be a string or an object with key-value pairs to define templates per breakpoint.\n\n- FirstPageLink\n- PrevPageLink\n- PageLinks\n- NextPageLink\n- LastPageLink\n- RowsPerPageDropdown\n- JumpToPageDropdown\n- JumpToPageInput\n- CurrentPageReport"
+                            "description": "Template of the paginator, can either be a string or an object with key-value pairs to define templates per breakpoint. Available templates are the following;\n\n- FirstPageLink\n- PrevPageLink\n- PageLinks\n- NextPageLink\n- LastPageLink\n- RowsPerPageDropdown\n- JumpToPageDropdown\n- JumpToPageInput\n- CurrentPageReport"
                         },
                         {
                             "name": "currentPageReportTemplate",
@@ -30221,6 +30396,14 @@
                             "type": "PickListPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -31604,6 +31787,13 @@
                             "readonly": false,
                             "type": "ColumnGroupPassThroughOptions",
                             "default": ""
+                        },
+                        {
+                            "name": "context",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "RowContext",
+                            "default": ""
                         }
                     ],
                     "methods": []
@@ -31639,7 +31829,31 @@
                 "RowProps": {
                     "description": "Defines valid properties in Row component.",
                     "relatedProp": "",
-                    "props": [],
+                    "props": [
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
+                        }
+                    ],
+                    "methods": []
+                },
+                "RowContext": {
+                    "description": "Defines current options in Row component.",
+                    "relatedProp": "",
+                    "props": [
+                        {
+                            "name": "index",
+                            "optional": false,
+                            "readonly": false,
+                            "type": "number",
+                            "default": "",
+                            "description": "Current index of the row."
+                        }
+                    ],
                     "methods": []
                 },
                 "RowSlots": {
@@ -33491,6 +33705,14 @@
                             "type": "SpeedDialPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -33880,6 +34102,14 @@
                             "type": "SplitButtonPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -33897,13 +34127,25 @@
                         },
                         {
                             "name": "icon",
-                            "parameters": [],
+                            "parameters": [
+                                {
+                                    "name": "scope",
+                                    "optional": false,
+                                    "type": "{\n  \t <b>class</b>: string, // Style class of the icon.\n  }"
+                                }
+                            ],
                             "returnType": "VNode<RendererNode, RendererElement, Object>[]",
                             "description": "Custom menu button icon template."
                         },
                         {
                             "name": "menubuttonicon",
-                            "parameters": [],
+                            "parameters": [
+                                {
+                                    "name": "scope",
+                                    "optional": false,
+                                    "type": "{\n  \t <b>class</b>: string, // Style class of the icon.\n  }"
+                                }
+                            ],
                             "returnType": "VNode<RendererNode, RendererElement, Object>[]",
                             "description": "Custom menu button icon template."
                         }
@@ -34473,6 +34715,14 @@
                             "type": "StepsPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -34845,6 +35095,14 @@
                             "type": "TabMenuPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -35259,14 +35517,6 @@
                             "description": "Uses to pass attributes to the list's DOM element."
                         },
                         {
-                            "name": "tab",
-                            "optional": true,
-                            "readonly": false,
-                            "type": "TabPanelPassThroughOptionType",
-                            "default": "",
-                            "description": "Uses to pass attributes to TabPanel helper components."
-                        },
-                        {
                             "name": "inkbar",
                             "optional": true,
                             "readonly": false,
@@ -35313,6 +35563,14 @@
                             "type": "TabViewPassThroughOptionType",
                             "default": "",
                             "description": "Uses to pass attributes to the panel's DOM element."
+                        },
+                        {
+                            "name": "tab",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "TabPanelPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to TabPanel helper components."
                         }
                     ],
                     "methods": []
@@ -36251,14 +36509,6 @@
                             "description": "Uses to pass attributes to the submenu icon's DOM element."
                         },
                         {
-                            "name": "submenu",
-                            "optional": true,
-                            "readonly": false,
-                            "type": "TieredMenuPassThroughOptionType",
-                            "default": "",
-                            "description": "Uses to pass attributes to the submenu's DOM element."
-                        },
-                        {
                             "name": "separator",
                             "optional": true,
                             "readonly": false,
@@ -36267,12 +36517,12 @@
                             "description": "Uses to pass attributes to the separator's DOM element."
                         },
                         {
-                            "name": "unstyled",
+                            "name": "submenu",
                             "optional": true,
                             "readonly": false,
-                            "type": "boolean",
-                            "default": "false",
-                            "description": "When enabled, it removes component related styles in the core."
+                            "type": "TieredMenuPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the submenu's DOM element."
                         }
                     ],
                     "methods": []
@@ -36482,6 +36732,14 @@
                             "type": "TieredMenuPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -36735,6 +36993,14 @@
                             "type": "TimelinePassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -38142,22 +38408,6 @@
                             "description": "Uses to pass attributes to the root's DOM element."
                         },
                         {
-                            "name": "loadingOverlay",
-                            "optional": true,
-                            "readonly": false,
-                            "type": "TreePassThroughOptionType",
-                            "default": "",
-                            "description": "Uses to pass attributes to the loading overlay's DOM element."
-                        },
-                        {
-                            "name": "loadingIcon",
-                            "optional": true,
-                            "readonly": false,
-                            "type": "TreePassThroughOptionType",
-                            "default": "",
-                            "description": "Uses to pass attributes to the loading icon's DOM element."
-                        },
-                        {
                             "name": "filterContainer",
                             "optional": true,
                             "readonly": false,
@@ -38276,6 +38526,22 @@
                             "type": "TreePassThroughOptionType",
                             "default": "",
                             "description": "Uses to pass attributes to the subgroup's DOM element."
+                        },
+                        {
+                            "name": "loadingOverlay",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "TreePassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the loading overlay's DOM element."
+                        },
+                        {
+                            "name": "loadingIcon",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "TreePassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the loading icon's DOM element."
                         }
                     ],
                     "methods": []
@@ -39696,12 +39962,20 @@
                             "description": "Uses to pass attributes to the header row's DOM element."
                         },
                         {
-                            "name": "headerCell",
+                            "name": "headerFilterRow",
                             "optional": true,
                             "readonly": false,
                             "type": "TreeTablePassThroughOptionType",
                             "default": "",
-                            "description": "Uses to pass attributes to the header cell's DOM element."
+                            "description": "Uses to pass attributes to the header filter row's DOM element."
+                        },
+                        {
+                            "name": "headerFilterCell",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "TreeTablePassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the header filter cell's DOM element."
                         },
                         {
                             "name": "tbody",
@@ -39712,6 +39986,14 @@
                             "description": "Uses to pass attributes to the tbody's DOM element."
                         },
                         {
+                            "name": "row",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "TreeTablePassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the row's DOM element."
+                        },
+                        {
                             "name": "emptyMessage",
                             "optional": true,
                             "readonly": false,
@@ -39720,12 +40002,12 @@
                             "description": "Uses to pass attributes to the empty message's DOM element."
                         },
                         {
-                            "name": "bodyCell",
+                            "name": "emptyMessageCell",
                             "optional": true,
                             "readonly": false,
                             "type": "TreeTablePassThroughOptionType",
                             "default": "",
-                            "description": "Uses to pass attributes to the body cell's DOM element."
+                            "description": "Uses to pass attributes to the empty message cell's DOM element."
                         },
                         {
                             "name": "tfoot",
@@ -39758,6 +40040,14 @@
                             "type": "TreeTablePassThroughOptionType",
                             "default": "",
                             "description": "Uses to pass attributes to the resize helper's DOM element."
+                        },
+                        {
+                            "name": "column",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "ColumnPassThroughOptionType",
+                            "default": "",
+                            "description": "Uses to pass attributes to the Column helper components."
                         }
                     ],
                     "methods": []
@@ -40202,6 +40492,14 @@
                             "type": "TreeTablePassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": []
@@ -41580,6 +41878,14 @@
                             "type": "VirtualScrollerPassThroughOptions",
                             "default": "",
                             "description": "Uses to pass attributes to DOM elements inside the component."
+                        },
+                        {
+                            "name": "unstyled",
+                            "optional": true,
+                            "readonly": false,
+                            "type": "boolean",
+                            "default": "false",
+                            "description": "When enabled, it removes component related styles in the core."
                         }
                     ],
                     "methods": [
@@ -41644,7 +41950,13 @@
                         },
                         {
                             "name": "loadingicon",
-                            "parameters": [],
+                            "parameters": [
+                                {
+                                    "name": "scope",
+                                    "optional": false,
+                                    "type": "{\n  \t <b>class</b>: string, // Style class of the icon.\n  }"
+                                }
+                            ],
                             "returnType": "VNode<RendererNode, RendererElement, Object>[]",
                             "description": "Custom loading icon template."
                         }

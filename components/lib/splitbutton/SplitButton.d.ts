@@ -163,6 +163,11 @@ export interface SplitButtonProps {
      * @type {SplitButtonPassThroughOptions}
      */
     pt?: SplitButtonPassThroughOptions;
+    /**
+     * When enabled, it removes component related styles in the core.
+     * @defaultValue false
+     */
+    unstyled?: boolean;
 }
 
 /**
@@ -176,11 +181,21 @@ export interface SplitButtonSlots {
     /**
      * Custom menu button icon template.
      */
-    icon(): VNode[];
+    icon(scope: {
+        /**
+         * Style class of the icon.
+         */
+        class: string;
+    }): VNode[];
     /**
      * Custom menu button icon template.
      */
-    menubuttonicon(): VNode[];
+    menubuttonicon(scope: {
+        /**
+         * Style class of the icon.
+         */
+        class: string;
+    }): VNode[];
 }
 
 /**

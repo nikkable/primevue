@@ -29,13 +29,17 @@ export interface PaginatorPassThroughMethodOptions {
  */
 export interface PaginatorPassThroughOptions {
     /**
+     * Uses to pass attributes to the paginator wrapper's DOM element.
+     */
+    paginatorWrapper?: PaginatorPassThroughOptionType;
+    /**
      * Uses to pass attributes to the root's DOM element.
      */
     root?: PaginatorPassThroughOptionType;
     /**
-     * Uses to pass attributes to the left's DOM element.
+     * Uses to pass attributes to the start's DOM element.
      */
-    left?: PaginatorPassThroughOptionType;
+    start?: PaginatorPassThroughOptionType;
     /**
      * Uses to pass attributes to the first page button's DOM element.
      */
@@ -189,7 +193,7 @@ export interface PaginatorProps {
      */
     rowsPerPageOptions?: number[] | undefined;
     /**
-     * Template of the paginator, can either be a string or an object with key-value pairs to define templates per breakpoint.
+     * Template of the paginator, can either be a string or an object with key-value pairs to define templates per breakpoint. Available templates are the following;
      *
      * - FirstPageLink
      * - PrevPageLink

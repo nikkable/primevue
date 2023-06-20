@@ -127,9 +127,8 @@
                                 <div class="text-900 font-medium text-xl mb-2">Single Designer</div>
                                 <div class="text-600 font-medium">For individual designers</div>
                                 <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
-                                <div v-if="pricing && pricing.single" class="flex flex-wrap gap-3">
-                                    <span v-if="pricing.single.old" :class="pricing.single.old.class ? pricing.single.old.class : ''">{{ pricing.single.old.value || '' }}</span>
-                                    <span v-if="pricing.single.new" :class="pricing.single.new.class ? pricing.single.new.class : ''">{{ pricing.single.new.value || '' }}</span>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-2xl font-bold text-900">$99</span>
                                 </div>
                                 <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
                                 <ul class="list-none p-0 m-0 flex-grow-1 text-lg">
@@ -168,9 +167,8 @@
                                 <div class="text-900 font-medium text-xl mb-2">Team</div>
                                 <div class="text-600 font-medium">For small teams</div>
                                 <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
-                                <div v-if="pricing && pricing.team" class="flex flex-wrap gap-3">
-                                    <span v-if="pricing.team.old" :class="pricing.team.old.class ? pricing.team.old.class : ''">{{ pricing.team.old.value || '' }}</span>
-                                    <span v-if="pricing.team.new" :class="pricing.team.new.class ? pricing.team.new.class : ''">{{ pricing.team.new.value || '' }}</span>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-2xl font-bold text-900">$249</span>
                                 </div>
                                 <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
                                 <ul class="list-none p-0 m-0 flex-grow-1 text-lg">
@@ -209,8 +207,8 @@
                                 <div class="text-900 font-medium text-xl mb-2">Enterprise</div>
                                 <div class="text-600 font-medium">For large teams</div>
                                 <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
-                                <div v-if="pricing && pricing.enterprise" class="flex flex-wrap gap-3">
-                                    <span v-if="pricing.enterprise.new" :class="pricing.enterprise.new.class ? pricing.enterprise.new.class : ''">{{ pricing.enterprise.new.value || '' }}</span>
+                                <div class="flex gap-3 flex-wrap">
+                                    <span class="text-2xl font-bold text-900">EXCLUSIVE DEALS</span>
                                 </div>
                                 <hr class="my-3 mx-0 border-top-1 border-none surface-border" />
                                 <ul class="list-none p-0 m-0 flex-grow-1 text-lg">
@@ -293,19 +291,7 @@
 </template>
 
 <script>
-import FetchPricing from '@/service/PricingService';
-
 export default {
-    data() {
-        return {
-            pricing: null
-        };
-    },
-    mounted() {
-        FetchPricing().then((data) => {
-            this.pricing = data;
-        });
-    },
     methods: {
         isDarkTheme() {
             return this.$appState.darkTheme === true;

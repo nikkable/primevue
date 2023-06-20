@@ -87,9 +87,7 @@ const classes = {
     message: 'p-confirm-popup-message',
     footer: 'p-confirm-popup-footer',
     rejectButton: ({ instance }) => ['p-confirm-dialog-reject', instance.confirmation ? instance.confirmation.rejectClass || 'p-button-text' : null],
-    rejectButtonIcon: ({ context }) => [context && context.icon, context && context.iconClass],
-    acceptButton: ({ instance }) => ['p-confirm-dialog-accept', instance.confirmation ? instance.confirmation.acceptClass : null],
-    acceptButtonIcon: ({ context }) => [context && context.icon, context && context.iconClass]
+    acceptButton: ({ instance }) => ['p-confirm-dialog-accept', instance.confirmation ? instance.confirmation.acceptClass : null]
 };
 
 const { load: loadStyle } = useStyle(styles, { id: 'primevue_confirmPopup_style', manual: true });
@@ -101,15 +99,13 @@ export default {
         group: String
     },
     css: {
-        classes
+        classes,
+        loadStyle
     },
-    watch: {
-        isUnstyled: {
-            immediate: true,
-            handler(newValue) {
-                !newValue && loadStyle();
-            }
-        }
+    provide() {
+        return {
+            $parentInstance: this
+        };
     }
 };
 </script>

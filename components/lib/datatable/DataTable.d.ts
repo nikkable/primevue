@@ -8,7 +8,10 @@
  *
  */
 import { InputHTMLAttributes, TableHTMLAttributes, VNode } from 'vue';
+import { ColumnPassThroughOptionType } from '../column';
+import { ColumnGroupPassThroughOptionType } from '../columngroup';
 import { PaginatorPassThroughOptionType } from '../paginator';
+import { RowPassThroughOptionType } from '../row';
 import { ClassComponent, GlobalComponentConstructor, Nullable } from '../ts-helpers';
 import { VirtualScrollerPassThroughOptionType, VirtualScrollerProps } from '../virtualscroller';
 
@@ -594,11 +597,11 @@ export interface DataTablePassThroughOptions {
     /**
      * Uses to pass attributes to the rowgroup header's DOM element.
      */
-    rowgroupHeader?: DataTablePassThroughOptionType;
+    rowGroupHeader?: DataTablePassThroughOptionType;
     /**
-     * Uses to pass attributes to the row's DOM element.
+     * Uses to pass attributes to the body row's DOM element.
      */
-    row?: DataTablePassThroughOptionType;
+    bodyRow?: DataTablePassThroughOptionType;
     /**
      * Uses to pass attributes to the row expansion's DOM element.
      */
@@ -606,7 +609,7 @@ export interface DataTablePassThroughOptions {
     /**
      * Uses to pass attributes to the rowgroup footer's DOM element.
      */
-    rowgroupFooter?: DataTablePassThroughOptionType;
+    rowGroupFooter?: DataTablePassThroughOptionType;
     /**
      * Uses to pass attributes to the empty message's DOM element.
      */
@@ -620,10 +623,6 @@ export interface DataTablePassThroughOptions {
      */
     footerRow?: DataTablePassThroughOptionType;
     /**
-     * Uses to pass attributes to the footer cell's DOM element.
-     */
-    footerCell?: DataTablePassThroughOptionType;
-    /**
      * Uses to pass attributes to the resize helper's DOM element.
      */
     resizeHelper?: DataTablePassThroughOptionType;
@@ -635,6 +634,18 @@ export interface DataTablePassThroughOptions {
      * Uses to pass attributes to the reorder indicator down's DOM element.
      */
     reorderIndicatorDown?: DataTablePassThroughOptionType;
+    /**
+     * Uses to pass attributes to the ColumnGroup helper components.
+     */
+    columnGroup?: ColumnGroupPassThroughOptionType;
+    /**
+     * Uses to pass attributes to the Row helper components.
+     */
+    row?: RowPassThroughOptionType;
+    /**
+     * Uses to pass attributes to the Column helper components.
+     */
+    column?: ColumnPassThroughOptionType;
 }
 
 /**
@@ -1016,6 +1027,11 @@ export interface DataTableProps {
      * @type {DataTablePassThroughOptions}
      */
     pt?: DataTablePassThroughOptions;
+    /**
+     * When enabled, it removes component related styles in the core.
+     * @defaultValue false
+     */
+    unstyled?: boolean;
 }
 
 /**

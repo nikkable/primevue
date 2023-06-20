@@ -199,7 +199,7 @@ const classes = {
     header: 'p-sidebar-header',
     headerContent: 'p-sidebar-header-content',
     closeButton: 'p-sidebar-close p-sidebar-icon p-link',
-    closeIcon: ({ props }) => ['p-sidebar-close-icon ', props.closeIcon],
+    closeIcon: 'p-sidebar-close-icon',
     content: 'p-sidebar-content'
 };
 
@@ -247,15 +247,13 @@ export default {
         }
     },
     css: {
-        classes
+        classes,
+        loadStyle
     },
-    watch: {
-        isUnstyled: {
-            immediate: true,
-            handler(newValue) {
-                !newValue && loadStyle();
-            }
-        }
+    provide() {
+        return {
+            $parentInstance: this
+        };
     }
 };
 </script>

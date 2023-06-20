@@ -1,6 +1,6 @@
 <template>
-    <div :class="['p-checkbox p-component', { 'p-checkbox-focused': focused, 'p-disabled': disabled }]" @click="onClick" @keydown.space.prevent="onClick" v-bind="getColumnPTOptions('headerCheckboxWrapper')">
-        <div class="p-hidden-accessible" v-bind="getColumnPTOptions('hiddenHeaderInputWrapper')">
+    <div :class="cx('headerCheckboxWrapper')" @click="onClick" @keydown.space.prevent="onClick" v-bind="getColumnPT('headerCheckboxWrapper')">
+        <div :class="cx('hiddenHeaderInputWrapper')" :style="sx('hiddenAccessible', isUnstyled)" v-bind="getColumnPT('hiddenHeaderInputWrapper')" :data-p-hidden-accessible="true">
             <input
                 ref="input"
                 type="checkbox"
@@ -10,12 +10,12 @@
                 :aria-label="headerCheckboxAriaLabel"
                 @focus="onFocus($event)"
                 @blur="onBlur($event)"
-                v-bind="getColumnPTOptions('hiddenHeaderInput')"
+                v-bind="getColumnPT('hiddenHeaderInput')"
             />
         </div>
-        <div ref="box" :class="['p-checkbox-box p-component', { 'p-highlight': checked, 'p-disabled': disabled, 'p-focus': focused }]" v-bind="getColumnPTOptions('headerCheckbox')">
-            <component v-if="headerCheckboxIconTemplate" :is="headerCheckboxIconTemplate" :checked="checked" class="p-checkbox-icon" />
-            <CheckIcon v-else class="p-checkbox-icon" v-bind="getColumnPTOptions('headerCheckboxIcon')" />
+        <div ref="box" :class="cx('headerCheckbox')" v-bind="getColumnPT('headerCheckbox')">
+            <component v-if="headerCheckboxIconTemplate" :is="headerCheckboxIconTemplate" :checked="checked" :class="cx('headerCheckboxIcon')" />
+            <CheckIcon v-else-if="!headerCheckboxIconTemplate && !!checked" :class="cx('headerCheckboxIcon')" v-bind="getColumnPT('headerCheckboxIcon')" />
         </div>
     </div>
 </template>
@@ -27,6 +27,7 @@ import { DomHandler } from 'primevue/utils';
 
 export default {
     name: 'HeaderCheckbox',
+    hostName: 'DataTable',
     extends: BaseComponent,
     emits: ['change'],
     props: {
@@ -44,7 +45,7 @@ export default {
         };
     },
     methods: {
-        getColumnPTOptions(key) {
+        getColumnPT(key) {
             return this.ptmo(this.getColumnProp(), key, {
                 props: this.column.props,
                 parent: {

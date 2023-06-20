@@ -1,6 +1,6 @@
 <template>
-    <div :class="['p-checkbox p-component', { 'p-checkbox-focused': focused }]" @click="onClick" v-bind="getColumnPTOptions('checkboxWrapper')">
-        <div class="p-hidden-accessible" v-bind="getColumnPTOptions('hiddenInputWrapper')">
+    <div :class="cx('checkboxWrapper')" @click="onClick" v-bind="getColumnPT('checkboxWrapper')">
+        <div :class="cx('hiddenInputWrapper')" :style="sx('hiddenAccessible', isUnstyled)" v-bind="getColumnPT('hiddenInputWrapper')" :data-p-hidden-accessible="true">
             <input
                 ref="input"
                 type="checkbox"
@@ -11,12 +11,12 @@
                 @focus="onFocus($event)"
                 @blur="onBlur($event)"
                 @keydown="onKeydown"
-                v-bind="getColumnPTOptions('hiddenInput')"
+                v-bind="getColumnPT('hiddenInput')"
             />
         </div>
-        <div ref="box" :class="['p-checkbox-box p-component', { 'p-highlight': checked, 'p-disabled': $attrs.disabled, 'p-focus': focused }]" v-bind="getColumnPTOptions('checkbox')">
-            <component v-if="rowCheckboxIconTemplate" :is="rowCheckboxIconTemplate" :checked="checked" class="p-checkbox-icon" />
-            <CheckIcon v-else class="p-checkbox-icon" v-bind="getColumnPTOptions('checkboxIcon')" />
+        <div ref="box" :class="cx('checkbox')" v-bind="getColumnPT('checkbox')">
+            <component v-if="rowCheckboxIconTemplate" :is="rowCheckboxIconTemplate" :checked="checked" :class="cx('checkboxIcon')" />
+            <CheckIcon v-else-if="!rowCheckboxIconTemplate && !!checked" :class="cx('checkboxIcon')" v-bind="getColumnPT('checkboxIcon')" />
         </div>
     </div>
 </template>
@@ -28,6 +28,7 @@ import { DomHandler } from 'primevue/utils';
 
 export default {
     name: 'RowCheckbox',
+    hostName: 'DataTable',
     extends: BaseComponent,
     emits: ['change'],
     props: {
@@ -37,6 +38,10 @@ export default {
         rowCheckboxIconTemplate: {
             type: Function,
             default: null
+        },
+        index: {
+            type: Number,
+            default: null
         }
     },
     data() {
@@ -45,7 +50,7 @@ export default {
         };
     },
     methods: {
-        getColumnPTOptions(key) {
+        getColumnPT(key) {
             return this.ptmo(this.getColumnProp(), key, {
                 props: this.column.props,
                 parent: {
@@ -53,6 +58,7 @@ export default {
                     state: this.$data
                 },
                 context: {
+                    index: this.index,
                     checked: this.checked,
                     focused: this.focused,
                     disabled: this.$attrs.disabled

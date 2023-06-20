@@ -23,9 +23,8 @@ export declare type ColumnPassThroughOptionType = ColumnPassThroughAttributes | 
  */
 export interface ColumnPassThroughMethodOptions {
     props: ColumnProps;
-    state: ColumnState;
-    context: ColumnContext;
     parent: DataTablePassThroughOptions;
+    context: ColumnContext;
 }
 
 /**
@@ -275,13 +274,13 @@ export interface ColumnPassThroughOptions {
      */
     rowEditorInitIcon?: ColumnPassThroughOptionType;
     /**
-     * Uses to pass attributes to the row editor edit button's DOM element.
+     * Uses to pass attributes to the row editor save button's DOM element.
      */
-    rowEditorEditButton?: ColumnPassThroughOptionType;
+    rowEditorSaveButton?: ColumnPassThroughOptionType;
     /**
-     * Uses to pass attributes to the row editor edit icon's DOM element.
+     * Uses to pass attributes to the row editor save icon's DOM element.
      */
-    rowEditorEditIcon?: ColumnPassThroughOptionType;
+    rowEditorSaveIcon?: ColumnPassThroughOptionType;
     /**
      * Uses to pass attributes to the row editor cancel button's DOM element.
      */
@@ -290,7 +289,14 @@ export interface ColumnPassThroughOptions {
      * Uses to pass attributes to the row editor cancel icon's DOM element.
      */
     rowEditorCancelIcon?: ColumnPassThroughOptionType;
-
+    /**
+     * Uses to pass attributes to the footer cell's DOM element.
+     */
+    footerCell?: ColumnPassThroughOptionType;
+    /**
+     * Uses to pass attributes to the body cell content's DOM element.
+     */
+    bodyCellContent?: ColumnPassThroughOptionType;
     /**
      * Uses to pass attributes to the hidden input wrapper's DOM element.
      */
@@ -346,27 +352,6 @@ export interface ColumnState {
      * Current style of the rowgroup header.
      */
     rowGroupHeaderStyleObject: object;
-}
-
-/**
- * Defines current options in Column component.
- */
-export interface ColumnContext {
-    /**
-     * Current checked state of row as a boolean.
-     * @defaultValue false
-     */
-    checked: boolean;
-    /**
-     * Current focused state of row as a boolean.
-     * @defaultValue false
-     */
-    focused: boolean;
-    /**
-     * Current disabled state of row as a boolean.
-     * @defaultValue false
-     */
-    disabled: boolean;
 }
 
 /**
@@ -572,6 +557,36 @@ export interface ColumnProps {
      * @type {ColumnPassThroughOptions}
      */
     pt?: ColumnPassThroughOptions;
+    /**
+     * When enabled, it removes component related styles in the core.
+     * @defaultValue false
+     */
+    unstyled?: boolean;
+}
+
+/**
+ * Defines current options in Column component.
+ */
+export interface ColumnContext {
+    /**
+     * Current index of the column.
+     */
+    index: number;
+    /**
+     * Current checked state of row as a boolean.
+     * @defaultValue false
+     */
+    checked: boolean;
+    /**
+     * Current focused state of row as a boolean.
+     * @defaultValue false
+     */
+    focused: boolean;
+    /**
+     * Current disabled state of row as a boolean.
+     * @defaultValue false
+     */
+    disabled: boolean;
 }
 
 /**
