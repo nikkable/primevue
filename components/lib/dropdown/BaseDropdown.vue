@@ -6,6 +6,7 @@ const styles = `
 .p-dropdown {
     display: inline-flex;
     cursor: pointer;
+    position: relative;
     user-select: none;
 }
 
@@ -96,18 +97,14 @@ input.p-dropdown-label {
 }
 `;
 
-const inlineStyles = {
-    root: ({ props }) => ({ position: props.appendTo === 'self' ? 'relative' : undefined })
-};
-
 const classes = {
-    root: ({ props, state }) => [
+    root: ({ instance, props, state }) => [
         'p-dropdown p-component p-inputwrapper',
         {
             'p-disabled': props.disabled,
             'p-dropdown-clearable': props.showClear && !props.disabled,
             'p-focus': state.focused,
-            'p-inputwrapper-filled': props.hasSelectedOption,
+            'p-inputwrapper-filled': instance.hasSelectedOption,
             'p-inputwrapper-focus': state.focused || state.overlayVisible,
             'p-overlay-open': state.overlayVisible
         }
@@ -309,7 +306,6 @@ export default {
         }
     },
     css: {
-        inlineStyles,
         classes,
         loadStyle
     },

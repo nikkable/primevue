@@ -1,5 +1,5 @@
 <template>
-    <button v-ripple :class="cx('root')" type="button" :aria-label="defaultAriaLabel" :disabled="disabled" v-bind="ptm('root')" data-pc-name="button" :data-pc-severity="severity">
+    <button v-ripple :class="cx('root')" type="button" :aria-label="defaultAriaLabel" :disabled="disabled" v-bind="ptm('root', { disabled })" data-pc-name="button" :data-pc-severity="severity">
         <slot>
             <slot v-if="loading" name="loadingicon" :class="[cx('loadingIcon'), cx('icon')]">
                 <span v-if="loadingIcon" :class="[cx('loadingIcon'), cx('icon'), loadingIcon]" v-bind="ptm('loadingIcon')" />
@@ -24,7 +24,7 @@ export default {
     extends: BaseButton,
     computed: {
         disabled() {
-            return this.$attrs.disabled || this.loading;
+            return this.$attrs.disabled || this.$attrs.disabled === '' || this.loading;
         },
         defaultAriaLabel() {
             return this.label ? this.label + (this.badge ? ' ' + this.badge : '') : this.$attrs['aria-label'];
