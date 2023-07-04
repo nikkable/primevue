@@ -20,8 +20,14 @@ export declare class DomHandler {
     static addClass(el: HTMLElement, className: string): void;
     static removeClass(el: HTMLElement, className: string): void;
     static hasClass(el: HTMLElement, className: string): boolean;
+    static addStyles(el: HTMLElement, styles: object): void;
     static find(el: HTMLElement, selector: string): any[];
     static findSingle(el: HTMLElement, selector: string): any;
+    static createElement(type: string, attributes: object, ...children: any): HTMLElement;
+    static setAttributes(el: HTMLElement, attributes: object): void;
+    static getAttribute(el: HTMLElement, name: string): any;
+    static isAttributeEquals(el: HTMLElement, name: string, value: any): boolean;
+    static isAttributeNotEquals(el: HTMLElement, name: string, value: any): boolean;
     static getHeight(el: HTMLElement): number;
     static getWidth(el: HTMLElement): number;
     static absolutePosition(el: HTMLElement, target: HTMLElement): void;
@@ -71,6 +77,10 @@ export declare class ObjectUtils {
     static convertToFlatCase(str: string): string;
     static isEmpty(value: any): boolean;
     static isNotEmpty(value: any): boolean;
+    static isFunction(value: any): boolean;
+    static isObject(value: any): boolean;
+    static isDate(value: any): boolean;
+    static isArray(value: any): boolean;
     static isPrintableCharacter(char: string): boolean;
     static findLast(value: any[], callback: () => any): any;
     static findLastIndex(value: any[], callback: () => any): number;
