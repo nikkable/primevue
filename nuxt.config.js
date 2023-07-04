@@ -56,7 +56,7 @@ export default defineNuxtConfig({
         }
     },
 
-    css: ['~/assets/styles/style.css', '@/assets/styles/primevue.css', '/node_modules/primeicons/primeicons.css', '@/assets/styles/flags.css', '@/components/lib/colorpicker/ColorPicker.css'],
+    css: ['~/assets/styles/style.css', '/node_modules/primeicons/primeicons.css', '@/assets/styles/flags.css'],
     postcss: {
         plugins: {
             tailwindcss: {},
